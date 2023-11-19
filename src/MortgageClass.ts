@@ -1,17 +1,28 @@
-type MortgageInit = {
+export type MortgageInit = {
   yearRate: number;
   period: number;
   creditTotal: number;
   startSum: number;
 };
 
+export const initialCalcState: MortgageInit = {
+  yearRate: 9.6,
+  period: 20,
+  creditTotal: 2000000,
+  startSum: 500000,
+};
+
 export class Mortgage {
-  yearRate: number;
-  period: number;
-  creditTotal: number;
-  startSum: number;
+  yearRate: number = initialCalcState.yearRate;
+  period: number = initialCalcState.period;
+  creditTotal: number = initialCalcState.creditTotal;
+  startSum: number = initialCalcState.startSum;
 
   constructor({ yearRate, period, creditTotal, startSum }: MortgageInit) {
+    this.updateInitialData({ yearRate, period, creditTotal, startSum });
+  }
+
+  updateInitialData({ yearRate, period, creditTotal, startSum }: MortgageInit) {
     this.yearRate = yearRate;
     this.period = period * 12;
     this.creditTotal = creditTotal;
@@ -32,8 +43,9 @@ export class MortgageAnnuitent extends Mortgage {
     this.monthRate = this.yearRate / 12 / 100;
     this.debt = this.creditTotal - this.startSum;
     this.totalRate = (1 + this.monthRate) ** this.period;
-    this.monthPayment =
-      (this.debt * this.monthRate * this.totalRate) / (this.totalRate - 1);
+    this.monthPayment = Math.round(
+      (this.debt * this.monthRate * this.totalRate) / (this.totalRate - 1)
+    );
   }
 }
 

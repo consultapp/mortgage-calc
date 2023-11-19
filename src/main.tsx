@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import MortgageCalc from "./components/calculator/MortgageCalc";
+import MortgageCalc from "./components/MortgageCalc/MortgageCalc.js";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme.jsx";
 
