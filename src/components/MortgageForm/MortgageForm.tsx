@@ -38,14 +38,22 @@ export default function MortgageForm() {
   }, [state, dispatch]);
 
   const sx = { m: 2, ml: 0 };
+
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        flexWrap: "wrap",
+      }}
+    >
       <FormControl sx={sx}>
         <Select
           onChange={handleChange}
           defaultValue={"annuitet"}
           id="type"
           disabled
+          sx={{ fontSize: "20px" }}
         >
           <MenuItem value="annuitet">{getPhrase(l, "annuity")}</MenuItem>
           <MenuItem value="differ">{getPhrase(l, "differ")}</MenuItem>
@@ -54,6 +62,7 @@ export default function MortgageForm() {
       <FormControl sx={sx}>
         <InputLabel htmlFor="creditTotal">Total Price</InputLabel>
         <OutlinedInput
+          sx={{ fontSize: "20px" }}
           type="number"
           id="creditTotal"
           startAdornment={
@@ -69,6 +78,7 @@ export default function MortgageForm() {
       <FormControl sx={sx}>
         <InputLabel htmlFor="startSum">Start Sum</InputLabel>
         <OutlinedInput
+          sx={{ fontSize: "20px" }}
           type="number"
           id="startSum"
           startAdornment={
@@ -85,6 +95,7 @@ export default function MortgageForm() {
         <FormControl sx={sx}>
           <InputLabel htmlFor="period">Years</InputLabel>
           <OutlinedInput
+            sx={{ fontSize: "20px" }}
             type="number"
             id="period"
             label={getPhrase(l, "percent")}
@@ -95,6 +106,7 @@ export default function MortgageForm() {
         <FormControl sx={sx}>
           <InputLabel htmlFor="yearRate">{getPhrase(l, "percent")}</InputLabel>
           <OutlinedInput
+            sx={{ fontSize: "20px" }}
             type="number"
             id="yearRate"
             label={getPhrase(l, "percent")}
