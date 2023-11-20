@@ -20,6 +20,8 @@ export default function MortgageForm() {
   const l = useContext(LangContext);
   const [state, setState] = useState(initialCalcState);
 
+  // React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
+
   const onChangeHandle = (
     event:
       | SelectChangeEvent<HTMLInputElement | string>
