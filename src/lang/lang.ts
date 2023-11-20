@@ -6,6 +6,7 @@ const LANG: { [index: string]: { [index: string]: string } } = {
     initialDebt: "Сумма кредита",
     annuity: "Аннуитетный платеж",
     differ: "Дифференцированный платеж",
+    name: "Ипотечный калькулятор",
   },
   en: {
     currency: "$",
@@ -14,6 +15,7 @@ const LANG: { [index: string]: { [index: string]: string } } = {
     initialDebt: "Initial Debt",
     annuity: "Annuity payment",
     differ: "Differentiated payment",
+    name: "Mortgage Calculator",
   },
 };
 

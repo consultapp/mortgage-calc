@@ -8,16 +8,12 @@ export default function LangSwitch() {
   const setLang = useContext(SetLangContext);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setLang(event.target.value ?? "En");
+    setLang(event.target.value ?? "ru");
   };
 
   return (
     <FormControl variant="standard">
-      <Select
-        id="demo-simple-select"
-        onChange={handleChange}
-        defaultValue={"en"}
-      >
+      <Select onChange={handleChange} defaultValue={"ru"}>
         <MenuItem value={"en"}>En</MenuItem>
         <MenuItem value={"ru"}>Ru</MenuItem>
       </Select>

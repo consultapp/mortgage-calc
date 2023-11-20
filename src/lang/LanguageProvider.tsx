@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function LanguageProvider({ children }: Props) {
-  const [lang, setLang] = useState<string>("en");
+  const [lang, setLang] = useState<string>("ru");
   return (
     <SetLangContext.Provider value={setLang}>
       <LangContext.Provider value={lang}>{children}</LangContext.Provider>

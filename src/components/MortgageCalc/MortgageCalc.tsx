@@ -3,8 +3,10 @@ import MortgageForm from "../MortgageForm/MortgageForm";
 import MortgageResult from "../MortgageResult/MortgageResult";
 // import MortgageTable from "../MortgageTable/MortgageTable";
 import CalcProvider from "../../context/CalcProvider";
-import LanguageProvider from "../../lang/LanguageProvider";
+import LanguageProvider, { LangContext } from "../../lang/LanguageProvider";
 import LangSwitch from "../LangSwitch/LangSwitch";
+import { useContext } from "react";
+import getPhrase from "../../lang/lang";
 
 function MortgageCalc() {
   return (
@@ -16,9 +18,7 @@ function MortgageCalc() {
         >
           <Grid container spacing={2}>
             <Grid item xs={12} mb={2}>
-              <Typography mt={8} mb={2} variant="h2" component="h1">
-                Mortgage Calculator
-              </Typography>
+              <MortgageHeader />
             </Grid>
             <Grid item xs={12} md={6}>
               <MortgageForm />
@@ -36,6 +36,15 @@ function MortgageCalc() {
         </Container>
       </CalcProvider>
     </LanguageProvider>
+  );
+}
+
+function MortgageHeader() {
+  const l = useContext(LangContext);
+  return (
+    <Typography mt={8} mb={2} variant="h2" component="h1">
+      {getPhrase(l, "name")}
+    </Typography>
   );
 }
 
