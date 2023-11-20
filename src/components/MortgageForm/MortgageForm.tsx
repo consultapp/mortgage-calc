@@ -20,13 +20,12 @@ export default function MortgageForm() {
   const l = useContext(LangContext);
   const [state, setState] = useState(initialCalcState);
 
-  // React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement>;
+  const onChangeHandle = (event: ChangeEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+    setState((prev) => ({ ...prev, [target.id]: parseFloat(target.value) }));
+  };
 
-  const onChangeHandle = (
-    event:
-      | SelectChangeEvent<HTMLInputElement | string>
-      | ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (event: SelectChangeEvent) => {
     const target = event.target as HTMLInputElement;
     setState((prev) => ({ ...prev, [target.id]: parseFloat(target.value) }));
   };
@@ -43,7 +42,7 @@ export default function MortgageForm() {
     <Box sx={{ display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
       <FormControl sx={sx}>
         <Select
-          onChange={onChangeHandle}
+          onChange={handleChange}
           defaultValue={"annuitet"}
           id="type"
           disabled
