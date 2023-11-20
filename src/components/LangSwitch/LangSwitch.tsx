@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
-import { LangContext, SetLangContext } from "../../lang/LanguageProvider";
-import InputLabel from "@mui/material/InputLabel";
+import { useContext } from "react";
+import { SetLangContext } from "../../lang/LanguageProvider";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export default function LangSwitch() {
-  const l = useContext(LangContext);
   const setLang = useContext(SetLangContext);
 
   const handleChange = (event: SelectChangeEvent) => {

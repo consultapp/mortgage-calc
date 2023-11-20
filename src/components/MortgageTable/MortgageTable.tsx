@@ -31,23 +31,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  period: string,
-  mainDebtPart: number,
-  percentDebtPart: number,
-  balance: number
-) {
-  return { period, mainDebtPart, percentDebtPart, balance };
-}
-
-const rows = [
-  createData("1", 159, 6.0, 24),
-  createData("1", 159, 6.0, 24),
-  createData("1", 159, 6.0, 24),
-  createData("1", 159, 6.0, 24),
-  createData("1", 159, 6.0, 24),
-];
-
 export default function MortgageTable() {
   const l = useContext(LangContext);
   const { mortgage } = useContext(CalcContext);
