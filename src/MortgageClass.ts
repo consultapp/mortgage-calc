@@ -8,8 +8,8 @@ export type MortgageInit = {
 
 interface IMortgageCalc {
   monthPayment: number;
-  updateInitialData(data: MortgageInit): void;
-  getTable(): {
+  updateInitialData?(data: MortgageInit): void;
+  getTable?(): {
     period: number;
     mainDebtPart: number;
     percentDebtPart: number;

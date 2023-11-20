@@ -13,7 +13,11 @@ export default function CalcProvider({ children }: Props) {
     new MortgageAnnuitent(initialCalcState)
   );
 
-  const value = useMemo(() => ({ mortgage, dispatch }), [mortgage]);
+  // const value = useMemo(() => ({ mortgage, dispatch }), [mortgage]);
 
-  return <CalcContext.Provider value={value}>{children}</CalcContext.Provider>;
+  return (
+    <CalcContext.Provider value={{ mortgage, dispatch }}>
+      {children}
+    </CalcContext.Provider>
+  );
 }
