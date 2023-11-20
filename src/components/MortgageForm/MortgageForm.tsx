@@ -19,7 +19,8 @@ export default function MortgageForm() {
   const [state, setState] = useState(initialCalcState);
 
   console.log("state", state);
-  const onChangeHandle = ({ target }: { target: EventTarget }) => {
+  const onChangeHandle = (event: Event) => {
+    const target = event.target as HTMLInputElement;
     setState((prev) => ({ ...prev, [target.id]: parseFloat(target.value) }));
   };
 
