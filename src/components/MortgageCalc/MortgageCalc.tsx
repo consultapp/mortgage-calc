@@ -16,7 +16,7 @@ function MortgageCalc() {
         >
           <Grid container spacing={2}>
             <Grid item xs={12} mb={2}>
-              <Typography mt={10} mb={2} variant="h2" component="h1">
+              <Typography mt={8} mb={2} variant="h2" component="h1">
                 Mortgage Calculator
               </Typography>
             </Grid>

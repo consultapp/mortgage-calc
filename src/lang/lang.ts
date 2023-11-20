@@ -2,6 +2,7 @@ const LANG: { [index: string]: { [index: string]: string } } = {
   ru: {
     currency: "\u20BD",
     percent: "Процентная ставка",
+    years: "Срок (годов)",
     initialDebt: "Сумма кредита",
     annuity: "Аннуитетный платеж",
     differ: "Дифференцированный платеж",
@@ -9,6 +10,7 @@ const LANG: { [index: string]: { [index: string]: string } } = {
   en: {
     currency: "$",
     percent: "Loan percent",
+    years: "Years",
     initialDebt: "Initial Debt",
     annuity: "Annuity payment",
     differ: "Differentiated payment",

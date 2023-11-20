@@ -93,12 +93,12 @@ export default function MortgageForm() {
       </FormControl>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         <FormControl sx={sx}>
-          <InputLabel htmlFor="period">Years</InputLabel>
+          <InputLabel htmlFor="period">{getPhrase(l, "years")}</InputLabel>
           <OutlinedInput
             sx={{ fontSize: "20px" }}
             type="number"
             id="period"
-            label={getPhrase(l, "percent")}
+            label={getPhrase(l, "years")}
             value={state?.period ? state.period : ""}
             onChange={onChangeHandle}
           />
