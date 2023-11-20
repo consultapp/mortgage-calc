@@ -60,7 +60,9 @@ export default function MortgageForm() {
         </Select>
       </FormControl>
       <FormControl sx={sx}>
-        <InputLabel htmlFor="creditTotal">Total Price</InputLabel>
+        <InputLabel htmlFor="creditTotal">
+          {getPhrase(l, "totalPrice")}
+        </InputLabel>
         <OutlinedInput
           sx={{ fontSize: "20px" }}
           type="number"
@@ -70,13 +72,13 @@ export default function MortgageForm() {
               {getPhrase(l, "currency")}
             </InputAdornment>
           }
-          label="Total Price"
+          label={getPhrase(l, "totalPrice")}
           value={state?.creditTotal ? state.creditTotal : ""}
           onChange={onChangeHandle}
         />
       </FormControl>
       <FormControl sx={sx}>
-        <InputLabel htmlFor="startSum">Start Sum</InputLabel>
+        <InputLabel htmlFor="startSum">{getPhrase(l, "startSum")}</InputLabel>
         <OutlinedInput
           sx={{ fontSize: "20px" }}
           type="number"
@@ -86,7 +88,7 @@ export default function MortgageForm() {
               {getPhrase(l, "currency")}
             </InputAdornment>
           }
-          label="Start Sum"
+          label={getPhrase(l, "startSum")}
           value={state?.startSum ? state.startSum : ""}
           onChange={onChangeHandle}
         />
