@@ -1,9 +1,13 @@
-import { useMemo, useReducer } from "react";
+import { ReactNode, useMemo, useReducer } from "react";
 import { MortgageAnnuitent, initialCalcState } from "../MortgageClass";
 import { CalcContext } from "./context";
 import { calcReducer } from "./reducer";
 
-export default function CalcProvider({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+export default function CalcProvider({ children }: Props) {
   const [mortgage, dispatch] = useReducer(
     calcReducer,
     new MortgageAnnuitent(initialCalcState)

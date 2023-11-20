@@ -1,9 +1,13 @@
-import { createContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 
 export const LangContext = createContext("en");
 export const SetLangContext = createContext(() => {});
 
-export default function LanguageProvider({ children }) {
+interface Props {
+  children?: ReactNode;
+}
+
+export default function LanguageProvider({ children }: Props) {
   const [lang, setLang] = useState("en");
   return (
     <SetLangContext.Provider value={setLang}>
