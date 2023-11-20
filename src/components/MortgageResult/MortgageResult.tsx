@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CalcContext } from "../../context/context";
 import { Box, Grid, Typography } from "@mui/material";
 import { LangContext } from "../../lang/LanguageProvider";
-import getPhrase, { LANG } from "../../lang/lang";
+import getPhrase from "../../lang/lang";
 
 export default function MortgageResult() {
   const l = useContext(LangContext);
