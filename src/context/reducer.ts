@@ -1,16 +1,22 @@
-import { MortgageInit } from "../MortgageClass";
-import { reducerStates } from "../states";
+import {
+  Mortgage,
+  MortgageAnnuitent,
+  MortgageDiffer,
+  MortgageInit,
+} from "../MortgageClass";
+import { reducerStates } from "./states";
 
-export const calcReducer = (
-  state,
-  { type, payload }: { type: string; payload: MortgageInit | null }
-) => {
+export function calcReducer(
+  mortgage: Mortgage | MortgageAnnuitent | MortgageDiffer,
+  { type, payload }: { type: string; payload: MortgageInit }
+) {
   switch (type) {
     case reducerStates.UPDATE_INIT:
-      state.updateInitialData(payload);
-      break;
+      return payload.type === "annuitet"
+        ? new MortgageAnnuitent(payload)
+        : new MortgageDiffer(payload);
 
     default:
-      break;
+      return mortgage;
   }
-};
+}

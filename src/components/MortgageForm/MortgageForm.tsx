@@ -6,27 +6,26 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CalcContext } from "../../context/context";
-import { reducerStates } from "../../states";
+import { reducerStates } from "../../context/states";
 import { initialCalcState } from "../../MortgageClass";
-
-// export const initialCalcState: MortgageInit = {
-//   yearRate: 9.6,
-//   period: 20,
-//   creditTotal: 2000000,
-//   startSum: 500000,
-// };
 
 export default function MortgageForm() {
   const { dispatch } = useContext(CalcContext);
   const [state, setState] = useState(initialCalcState);
 
   console.log("state", state);
-  const onChangeHandle = ({ target }) => {
-    setState((prev) => ({ ...prev, [target.id]: target.value }));
-    dispatch({ type: reducerStates.UPDATE_INIT, payload: state });
+  const onChangeHandle = ({ target }: { target: EventTarget }) => {
+    setState((prev) => ({ ...prev, [target.id]: parseFloat(target.value) }));
   };
+
+  useEffect(() => {
+    dispatch({
+      type: reducerStates.UPDATE_INIT,
+      payload: state,
+    });
+  }, [state, dispatch]);
 
   const sx = { m: 2, ml: 0 };
   return (
