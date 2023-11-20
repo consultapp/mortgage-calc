@@ -1,4 +1,4 @@
-const LANG: { [key: string]: string } = {
+const LANG: { [index: string]: { [index: string]: string } } = {
   ru: {
     currency: "\u20BD",
     percent: "Процентная ставка",
