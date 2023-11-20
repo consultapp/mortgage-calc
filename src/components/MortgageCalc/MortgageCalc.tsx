@@ -26,9 +26,9 @@ function MortgageCalc() {
             <Grid item xs={12} md={6} sx={{ justifyContent: "flex-start" }}>
               <MortgageResult />
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <MortgageTable />
-            </Grid>
+            </Grid> */}
           </Grid>
           <Box sx={{ position: "absolute", right: "25px", top: "25px" }}>
             <LangSwitch />
