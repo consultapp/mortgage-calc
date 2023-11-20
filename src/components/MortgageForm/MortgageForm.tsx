@@ -6,7 +6,7 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
-import { useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { CalcContext } from "../../context/context";
 import { reducerStates } from "../../context/states";
 import { initialCalcState } from "../../MortgageClass";
@@ -19,7 +19,7 @@ export default function MortgageForm() {
   const [state, setState] = useState(initialCalcState);
 
   console.log("state", state);
-  const onChangeHandle = (event: Event) => {
+  const onChangeHandle = (event: ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     setState((prev) => ({ ...prev, [target.id]: parseFloat(target.value) }));
   };
