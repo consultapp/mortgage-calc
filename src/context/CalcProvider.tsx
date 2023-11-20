@@ -1,4 +1,4 @@
-import { ReactNode, useMemo, useReducer } from "react";
+import { ReactNode, useReducer } from "react";
 import { MortgageAnnuitent, initialCalcState } from "../MortgageClass";
 import { CalcContext } from "./context";
 import { calcReducer } from "./reducer";

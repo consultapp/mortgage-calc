@@ -45,6 +45,23 @@ export class Mortgage implements IMortgageCalc {
     this.creditTotal = creditTotal;
     this.startSum = startSum;
   }
+  getTable(): {
+    period: number;
+    mainDebtPart: number;
+    percentDebtPart: number;
+    balance: number;
+  }[] {
+    let balance = this.monthPayment * this.period;
+    return new Array(this.periodYears).fill({}).map((_, i) => {
+      balance -= this.monthPayment * 12;
+      return {
+        period: i + 1,
+        mainDebtPart: 0,
+        percentDebtPart: 0,
+        balance: balance,
+      };
+    });
+  }
 }
 
 export class MortgageAnnuitent extends Mortgage {
@@ -90,6 +107,11 @@ export class MortgageAnnuitent extends Mortgage {
   }
 }
 export class MortgageDiffer extends Mortgage {
+  monthRate: number = 0;
+  debt: number = 0;
+  totalRate: number = 0;
+  monthPayment: number = 0;
+
   constructor(data: MortgageInit) {
     super(data);
     this.updateData();

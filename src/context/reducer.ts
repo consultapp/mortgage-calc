@@ -1,5 +1,4 @@
 import {
-  Mortgage,
   MortgageAnnuitent,
   MortgageDiffer,
   MortgageInit,
@@ -7,7 +6,7 @@ import {
 import { reducerStates } from "./states";
 
 export function calcReducer(
-  mortgage: Mortgage | MortgageAnnuitent | MortgageDiffer,
+  mortgage: MortgageAnnuitent | MortgageDiffer,
   { type, payload }: { type: string; payload: MortgageInit }
 ) {
   switch (type) {
