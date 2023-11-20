@@ -10,9 +10,12 @@ import { useContext, useEffect, useState } from "react";
 import { CalcContext } from "../../context/context";
 import { reducerStates } from "../../context/states";
 import { initialCalcState } from "../../MortgageClass";
+import { LangContext } from "../../lang/LanguageProvider";
+import getPhrase from "../../lang/lang";
 
 export default function MortgageForm() {
   const { dispatch } = useContext(CalcContext);
+  const l = useContext(LangContext);
   const [state, setState] = useState(initialCalcState);
 
   console.log("state", state);
@@ -35,7 +38,11 @@ export default function MortgageForm() {
         <OutlinedInput
           type="number"
           id="creditTotal"
-          startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          startAdornment={
+            <InputAdornment position="start">
+              {getPhrase(l, "currency")}
+            </InputAdornment>
+          }
           label="Total Price"
           value={state?.creditTotal ? state.creditTotal : ""}
           onChange={onChangeHandle}
@@ -46,7 +53,11 @@ export default function MortgageForm() {
         <OutlinedInput
           type="number"
           id="startSum"
-          startAdornment={<InputAdornment position="start">$</InputAdornment>}
+          startAdornment={
+            <InputAdornment position="start">
+              {getPhrase(l, "currency")}
+            </InputAdornment>
+          }
           label="Start Sum"
           value={state?.startSum ? state.startSum : ""}
           onChange={onChangeHandle}
@@ -58,17 +69,17 @@ export default function MortgageForm() {
           <OutlinedInput
             type="number"
             id="period"
-            label="Years"
+            label={getPhrase(l, "percent")}
             value={state?.period ? state.period : ""}
             onChange={onChangeHandle}
           />
         </FormControl>
         <FormControl sx={sx}>
-          <InputLabel htmlFor="yearRate">Percent</InputLabel>
+          <InputLabel htmlFor="yearRate">{getPhrase(l, "percent")}</InputLabel>
           <OutlinedInput
             type="number"
             id="yearRate"
-            label="Percent"
+            label={getPhrase(l, "percent")}
             value={state?.yearRate ? state.yearRate : ""}
             endAdornment={<InputAdornment position="end">%</InputAdornment>}
             onChange={onChangeHandle}

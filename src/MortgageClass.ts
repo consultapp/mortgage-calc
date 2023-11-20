@@ -9,6 +9,12 @@ export type MortgageInit = {
 interface IMortgageCalc {
   monthPayment: number;
   updateInitialData(data: MortgageInit): void;
+  getTable(): {
+    period: number;
+    mainDebtPart: number;
+    percentDebtPart: number;
+    balance: number;
+  }[];
 }
 
 export const initialCalcState: MortgageInit = {
@@ -22,6 +28,7 @@ export const initialCalcState: MortgageInit = {
 export class Mortgage implements IMortgageCalc {
   yearRate: number = initialCalcState.yearRate;
   period: number = initialCalcState.period;
+  periodYears: number = 0;
   creditTotal: number = initialCalcState.creditTotal;
   startSum: number = initialCalcState.startSum;
   type: "annuitet" | "differ" = "annuitet";
@@ -33,6 +40,7 @@ export class Mortgage implements IMortgageCalc {
 
   updateInitialData({ yearRate, period, creditTotal, startSum }: MortgageInit) {
     this.yearRate = yearRate;
+    this.periodYears = period;
     this.period = period * 12;
     this.creditTotal = creditTotal;
     this.startSum = startSum;
@@ -61,6 +69,24 @@ export class MortgageAnnuitent extends Mortgage {
     this.monthPayment = Math.round(
       (this.debt * this.monthRate * this.totalRate) / (this.totalRate - 1)
     );
+  }
+
+  getTable(): {
+    period: number;
+    mainDebtPart: number;
+    percentDebtPart: number;
+    balance: number;
+  }[] {
+    let balance = this.monthPayment * this.period;
+    return new Array(this.periodYears).fill({}).map((_, i) => {
+      balance -= this.monthPayment * 12;
+      return {
+        period: i + 1,
+        mainDebtPart: 0,
+        percentDebtPart: 0,
+        balance: balance,
+      };
+    });
   }
 }
 export class MortgageDiffer extends Mortgage {
