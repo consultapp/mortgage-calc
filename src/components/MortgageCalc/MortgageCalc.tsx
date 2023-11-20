@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import MortgageForm from "../MortgageForm/MortgageForm";
 import MortgageResult from "../MortgageResult/MortgageResult";
-import MortgageTable from "../MortgageTable/MortgageTable";
+// import MortgageTable from "../MortgageTable/MortgageTable";
 import CalcProvider from "../../context/CalcProvider";
 import LanguageProvider from "../../lang/LanguageProvider";
 import LangSwitch from "../LangSwitch/LangSwitch";
