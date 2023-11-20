@@ -5,6 +5,8 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { CalcContext } from "../../context/context";
@@ -18,8 +20,11 @@ export default function MortgageForm() {
   const l = useContext(LangContext);
   const [state, setState] = useState(initialCalcState);
 
-  console.log("state", state);
-  const onChangeHandle = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandle = (
+    event:
+      | SelectChangeEvent<HTMLInputElement | string>
+      | ChangeEvent<HTMLInputElement>
+  ) => {
     const target = event.target as HTMLInputElement;
     setState((prev) => ({ ...prev, [target.id]: parseFloat(target.value) }));
   };
@@ -34,6 +39,17 @@ export default function MortgageForm() {
   const sx = { m: 2, ml: 0 };
   return (
     <Box sx={{ display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
+      <FormControl sx={sx}>
+        <Select
+          onChange={onChangeHandle}
+          defaultValue={"annuitet"}
+          id="type"
+          disabled
+        >
+          <MenuItem value="annuitet">{getPhrase(l, "annuity")}</MenuItem>
+          <MenuItem value="differ">{getPhrase(l, "differ")}</MenuItem>
+        </Select>
+      </FormControl>
       <FormControl sx={sx}>
         <InputLabel htmlFor="creditTotal">Total Price</InputLabel>
         <OutlinedInput

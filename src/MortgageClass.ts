@@ -3,7 +3,7 @@ export type MortgageInit = {
   period: number;
   creditTotal: number;
   startSum: number;
-  type: "annuitet" | "deffirent";
+  type: "annuitet" | "differ";
 };
 
 interface IMortgageCalc {
