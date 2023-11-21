@@ -1,8 +1,8 @@
 export type MortgageInit = {
-  yearRate: number;
-  period: number;
-  creditTotal: number;
-  startSum: number;
+  yearRate: number | string;
+  period: number | string;
+  creditTotal: number | string;
+  startSum: number | string;
   type: "annuitet" | "differ";
 };
 
@@ -18,19 +18,19 @@ interface IMortgageCalc {
 }
 
 export const initialCalcState: MortgageInit = {
-  yearRate: 9.6,
+  yearRate: 15.9,
   period: 20,
-  creditTotal: 2000000,
-  startSum: 500000,
+  creditTotal: 10000000,
+  startSum: 4000000,
   type: "annuitet",
 };
 
 export class Mortgage implements IMortgageCalc {
-  yearRate: number = initialCalcState.yearRate;
-  period: number = initialCalcState.period;
+  yearRate: number = Number(initialCalcState.yearRate);
+  period: number = Number(initialCalcState.period);
   periodYears: number = 0;
-  creditTotal: number = initialCalcState.creditTotal;
-  startSum: number = initialCalcState.startSum;
+  creditTotal: number = Number(initialCalcState.creditTotal);
+  startSum: number = Number(initialCalcState.startSum);
   type: "annuitet" | "differ" = "annuitet";
   monthPayment: number = 0;
 
@@ -39,11 +39,11 @@ export class Mortgage implements IMortgageCalc {
   }
 
   updateInitialData({ yearRate, period, creditTotal, startSum }: MortgageInit) {
-    this.yearRate = yearRate;
-    this.periodYears = period;
-    this.period = period * 12;
-    this.creditTotal = creditTotal;
-    this.startSum = startSum;
+    this.yearRate = Number(yearRate);
+    this.periodYears = Number(period);
+    this.period = Number(period) * 12;
+    this.creditTotal = Number(creditTotal);
+    this.startSum = Number(startSum);
   }
   getTable(): {
     period: number;
