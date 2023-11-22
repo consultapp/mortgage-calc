@@ -11,54 +11,10 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { ChangeEvent, useContext, useEffect, useReducer } from "react";
 import { CalcContext } from "../../context/context";
 import { reducerStates } from "../../context/states";
-import { MortgageInit, initialCalcState } from "../../MortgageClass";
+import { initialCalcState } from "../../MortgageClass";
 import { LangContext } from "../../lang/LanguageProvider";
 import getPhrase from "../../lang/lang";
-
-function reducer(
-  state: MortgageInit,
-  { type, payload }: { type: string; payload: string }
-): MortgageInit {
-  let val = 0;
-  switch (type) {
-    case "yearRate":
-      // eslint-disable-next-line no-case-declarations
-      val = parseFloat(payload);
-      if (payload === "" || (val >= 0 && val < 100)) {
-        return {
-          ...state,
-          yearRate: payload === "" ? payload : val,
-        };
-      }
-      break;
-    case "period":
-      val = Number(payload);
-      if (payload === "" || (val >= 0 && val < 100)) {
-        return { ...state, period: payload === "" ? payload : val };
-      }
-      break;
-    case "creditTotal":
-      val = Number(payload);
-      if (payload === "" || (val >= 0 && val <= 1000000000)) {
-        return { ...state, creditTotal: payload === "" ? payload : val };
-      }
-      break;
-    case "startSum":
-      val = Number(payload);
-      if (
-        (payload === "" || (val >= 0 && val <= 1000000000)) &&
-        val < Number(state.creditTotal) - 99
-      ) {
-        return { ...state, startSum: payload === "" ? payload : val };
-      }
-      break;
-    case "type":
-      return { ...state, type: payload === "annuitet" ? "annuitet" : "differ" };
-    default:
-      break;
-  }
-  return state;
-}
+import { reducer } from "./reducer";
 
 export default function MortgageForm() {
   const { dispatch } = useContext(CalcContext);

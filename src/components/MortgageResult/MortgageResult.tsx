@@ -10,7 +10,7 @@ export default function MortgageResult() {
   if (!mortgage) {
     <div>Data error</div>;
   }
-  console.log("mortgage", mortgage);
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={6} mb={2}>
