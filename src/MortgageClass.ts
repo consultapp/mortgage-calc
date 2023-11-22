@@ -83,9 +83,13 @@ export class MortgageAnnuitent extends Mortgage {
     this.monthRate = this.yearRate / 12 / 100;
     this.debt = this.creditTotal - this.startSum;
     this.totalRate = (1 + this.monthRate) ** this.period;
-    this.monthPayment = Math.round(
-      (this.debt * this.monthRate * this.totalRate) / (this.totalRate - 1)
+    this.monthPayment = parseFloat(
+      (
+        (this.debt * this.monthRate * this.totalRate) /
+        (this.totalRate - 1)
+      ).toFixed(2)
     );
+    console.log("this.monthPayment", this.monthPayment);
   }
 
   getTable(): {
