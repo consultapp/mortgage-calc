@@ -7,6 +7,7 @@ import LanguageProvider, { LangContext } from "../../lang/LanguageProvider";
 import LangSwitch from "../LangSwitch/LangSwitch";
 import { useContext } from "react";
 import getPhrase from "../../lang/lang";
+import InfoBox from "../InfoBox/InfoBox";
 
 function MortgageCalc() {
   return (
@@ -33,6 +34,7 @@ function MortgageCalc() {
           <Box sx={{ position: "absolute", right: "25px", top: "25px" }}>
             <LangSwitch />
           </Box>
+          <InfoBox />
         </Container>
       </CalcProvider>
     </LanguageProvider>
