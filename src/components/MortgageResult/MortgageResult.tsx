@@ -58,7 +58,7 @@ export default function MortgageResult() {
             &nbsp;{getPhrase(l, "currency")}
           </Typography>
           <Typography mt={0} mb={2} variant="h6" component="h5">
-            Month payment
+            {getPhrase(l, "monthPayment")}
           </Typography>
         </Box>
       </Grid>

@@ -1,6 +1,10 @@
 import { Typography } from "@mui/material";
+import { useContext } from "react";
+import { LangContext } from "../../lang/LanguageProvider";
 
 export default function InfoBox() {
+  const l = useContext(LangContext);
+  if (l !== "ru") return "";
   return (
     <div>
       <Typography variant="h5" sx={{ mt: 3 }}>

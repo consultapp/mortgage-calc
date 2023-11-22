@@ -12,6 +12,7 @@ const LANG: { [index: string]: { [index: string]: string } } = {
     totalLoan: "Долг + Проценты",
     totalPrice: "Стоимость объекта",
     startSum: "Первоначальный взнос",
+    monthPayment: "Ежемесячный платёж",
   },
   en: {
     currency: "$",
@@ -26,6 +27,7 @@ const LANG: { [index: string]: { [index: string]: string } } = {
     totalLoan: "Total Loan",
     totalPrice: "Total Price",
     startSum: "Start Sum",
+    monthPayment: "Month Payment",
   },
 };
 
