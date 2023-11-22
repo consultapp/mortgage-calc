@@ -39,14 +39,14 @@ function reducer(
       break;
     case "creditTotal":
       val = Number(payload);
-      if (payload === "" || (val >= 0 && val < 100000000)) {
+      if (payload === "" || (val >= 0 && val <= 1000000000)) {
         return { ...state, creditTotal: payload === "" ? payload : val };
       }
       break;
     case "startSum":
       val = Number(payload);
       if (
-        (payload === "" || (val >= 0 && val < 100000000)) &&
+        (payload === "" || (val >= 0 && val <= 1000000000)) &&
         val < Number(state.creditTotal) - 99
       ) {
         return { ...state, startSum: payload === "" ? payload : val };
