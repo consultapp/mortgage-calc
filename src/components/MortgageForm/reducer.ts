@@ -27,11 +27,7 @@ export function reducer(
     case "creditTotal":
       val = Number(payload);
       //   1 000 000 000
-      if (
-        (payload === "" || (val >= 0 && val <= 1000000000)) &&
-        payload !== "" &&
-        val > Number(state.startSum) - 99
-      ) {
+      if (payload === "" || (val >= 0 && val <= 1000000000)) {
         return { ...state, creditTotal: payload === "" ? payload : val };
       }
       break;
