@@ -110,6 +110,9 @@ export default function MortgageForm() {
           <InputLabel htmlFor="yearRate">{getPhrase(l, "percent")}</InputLabel>
           <OutlinedInput
             sx={{ fontSize: "20px" }}
+            inputProps={{
+              step: 0.1,
+            }}
             type="number"
             id="yearRate"
             label={getPhrase(l, "percent")}
