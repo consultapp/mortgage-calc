@@ -1,4 +1,4 @@
-const LANG: { [index: string]: { [index: string]: string } } = {
+export const LANG: { [index: string]: { [index: string]: string } } = {
   ru: {
     currency: "\u20BD",
     percent: "Процентная ставка",
@@ -30,7 +30,3 @@ const LANG: { [index: string]: { [index: string]: string } } = {
     monthPayment: "Month Payment",
   },
 };
-
-export default function getPhrase(lang: string, phrase: string): string {
-  return LANG[lang][phrase];
-}

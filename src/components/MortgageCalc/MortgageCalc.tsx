@@ -3,11 +3,10 @@ import MortgageForm from "../MortgageForm/MortgageForm";
 import MortgageResult from "../MortgageResult/MortgageResult";
 // import MortgageTable from "../MortgageTable/MortgageTable";
 import CalcProvider from "../../context/CalcProvider";
-import LanguageProvider, { LangContext } from "../../lang/LanguageProvider";
+import LanguageProvider from "../../lang/LanguageProvider";
 import LangSwitch from "../LangSwitch/LangSwitch";
-import { useContext } from "react";
-import getPhrase from "../../lang/lang";
 import InfoBox from "../InfoBox/InfoBox";
+import { useLang } from "../../lang/useLang";
 
 function MortgageCalc() {
   return (
@@ -42,10 +41,10 @@ function MortgageCalc() {
 }
 
 function MortgageHeader() {
-  const l = useContext(LangContext);
+  const lang = useLang();
   return (
     <Typography mt={8} mb={2} variant="h2" component="h1">
-      {getPhrase(l, "name")}
+      {lang("name")}
     </Typography>
   );
 }

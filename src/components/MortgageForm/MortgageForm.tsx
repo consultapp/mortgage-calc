@@ -12,13 +12,12 @@ import { ChangeEvent, useContext, useEffect, useReducer } from "react";
 import { CalcContext } from "../../context/context";
 import { reducerStates } from "../../context/states";
 import { initialCalcState } from "../../MortgageClass";
-import { LangContext } from "../../lang/LanguageProvider";
-import getPhrase from "../../lang/lang";
 import { reducer } from "./reducer";
+import { useLang } from "../../lang/useLang";
 
 export default function MortgageForm() {
   const { dispatch } = useContext(CalcContext);
-  const l = useContext(LangContext);
+  const lang = useLang();
   const [state, dispatchState] = useReducer(reducer, initialCalcState);
 
   const onChangeHandle = (event: ChangeEvent<HTMLInputElement>) => {
@@ -56,65 +55,59 @@ export default function MortgageForm() {
           disabled
           sx={{ fontSize: "20px" }}
         >
-          <MenuItem value="annuitet">{getPhrase(l, "annuity")}</MenuItem>
-          <MenuItem value="differ">{getPhrase(l, "differ")}</MenuItem>
+          <MenuItem value="annuitet">{lang("annuity")}</MenuItem>
+          <MenuItem value="differ">{lang("differ")}</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={sx}>
-        <InputLabel htmlFor="creditTotal">
-          {getPhrase(l, "totalPrice")}
-        </InputLabel>
+        <InputLabel htmlFor="creditTotal">{lang("totalPrice")}</InputLabel>
         <OutlinedInput
           sx={{ fontSize: "20px" }}
           type="number"
           id="creditTotal"
           startAdornment={
-            <InputAdornment position="start">
-              {getPhrase(l, "currency")}
-            </InputAdornment>
+            <InputAdornment position="start">{lang("currency")}</InputAdornment>
           }
-          label={getPhrase(l, "totalPrice")}
+          label={lang("totalPrice")}
           value={state.creditTotal ?? ""}
           onChange={onChangeHandle}
         />
       </FormControl>
       <FormControl sx={sx}>
-        <InputLabel htmlFor="startSum">{getPhrase(l, "startSum")}</InputLabel>
+        <InputLabel htmlFor="startSum">{lang("startSum")}</InputLabel>
         <OutlinedInput
           sx={{ fontSize: "20px" }}
           type="number"
           id="startSum"
           startAdornment={
-            <InputAdornment position="start">
-              {getPhrase(l, "currency")}
-            </InputAdornment>
+            <InputAdornment position="start">{lang("currency")}</InputAdornment>
           }
-          label={getPhrase(l, "startSum")}
+          label={lang("startSum")}
           value={state.startSum ?? ""}
           onChange={onChangeHandle}
         />
       </FormControl>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         <FormControl sx={sx}>
-          <InputLabel htmlFor="period">{getPhrase(l, "years")}</InputLabel>
+          <InputLabel htmlFor="period">{lang("years")}</InputLabel>
           <OutlinedInput
             sx={{ fontSize: "20px" }}
             type="number"
             id="period"
             inputProps={{ max: 50, min: 1 }}
-            label={getPhrase(l, "years")}
+            label={lang("years")}
             value={state.period ?? ""}
             onChange={onChangeHandle}
           />
         </FormControl>
         <FormControl sx={sx}>
-          <InputLabel htmlFor="yearRate">{getPhrase(l, "percent")}</InputLabel>
+          <InputLabel htmlFor="yearRate">{lang("percent")}</InputLabel>
           <OutlinedInput
             sx={{ fontSize: "20px" }}
             inputProps={{ max: 30, min: 1, step: 0.1 }}
             type="number"
             id="yearRate"
-            label={getPhrase(l, "percent")}
+            label={lang("percent")}
             value={state.yearRate ?? ""}
             endAdornment={<InputAdornment position="end">%</InputAdornment>}
             onChange={onChangeHandle}

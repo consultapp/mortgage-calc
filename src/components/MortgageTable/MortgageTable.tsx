@@ -7,9 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useContext } from "react";
-import { LangContext } from "../../lang/LanguageProvider";
-import getPhrase from "../../lang/lang";
 import { CalcContext } from "../../context/context";
+import { useLang } from "../../lang/useLang";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,7 +31,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function MortgageTable() {
-  const l = useContext(LangContext);
+  const lang = useLang();
   const { mortgage } = useContext(CalcContext);
   return (
     <TableContainer component={Paper}>
@@ -41,13 +40,13 @@ export default function MortgageTable() {
           <TableRow>
             <StyledTableCell>Years</StyledTableCell>
             <StyledTableCell align="right">
-              Debt,&nbsp;{getPhrase(l, "currency")}
+              Debt,&nbsp;{lang("currency")}
             </StyledTableCell>
             <StyledTableCell align="right">
-              Percents,&nbsp;{getPhrase(l, "currency")}
+              Percents,&nbsp;{lang("currency")}
             </StyledTableCell>
             <StyledTableCell align="right">
-              Loan balance,&nbsp;{getPhrase(l, "currency")}
+              Loan balance,&nbsp;{lang("currency")}
             </StyledTableCell>
           </TableRow>
         </TableHead>

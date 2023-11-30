@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { CalcContext } from "../../context/context";
 import { Box, Grid, Typography } from "@mui/material";
-import { LangContext } from "../../lang/LanguageProvider";
-import getPhrase from "../../lang/lang";
+import { useLang } from "../../lang/useLang";
 
 export default function MortgageResult() {
-  const l = useContext(LangContext);
+  const lang = useLang();
   const { mortgage } = useContext(CalcContext);
   if (!mortgage) {
     <div>Data error</div>;
@@ -17,10 +16,10 @@ export default function MortgageResult() {
         <Box>
           <Typography mt={1} mb={0} variant="h4" component="h3">
             {mortgage ? mortgage.debt.toLocaleString("ru-RU") : ""}&nbsp;
-            {getPhrase(l, "currency")}
+            {lang("currency")}
           </Typography>
           <Typography mt={0} mb={2} variant="h6" component="h5">
-            {getPhrase(l, "initDebt")}
+            {lang("initDebt")}
           </Typography>
         </Box>
         <Box>
@@ -31,10 +30,10 @@ export default function MortgageResult() {
                   mortgage.debt
                 ).toLocaleString("ru-RU")
               : ""}
-            &nbsp;{getPhrase(l, "currency")}
+            &nbsp;{lang("currency")}
           </Typography>
           <Typography mt={0} mb={2} variant="h6" component="h5">
-            {getPhrase(l, "overpay")}
+            {lang("overpay")}
           </Typography>
         </Box>
         <Box>
@@ -44,10 +43,10 @@ export default function MortgageResult() {
                   "ru-RU"
                 )
               : ""}
-            &nbsp;{getPhrase(l, "currency")}
+            &nbsp;{lang("currency")}
           </Typography>
           <Typography mt={0} mb={2} variant="h6" component="h5">
-            {getPhrase(l, "totalLoan")}
+            {lang("totalLoan")}
           </Typography>
         </Box>
       </Grid>
@@ -55,10 +54,10 @@ export default function MortgageResult() {
         <Box>
           <Typography mt={1} mb={0} variant="h4" component="h3">
             {mortgage ? mortgage.monthPayment.toLocaleString("ru-RU") : ""}
-            &nbsp;{getPhrase(l, "currency")}
+            &nbsp;{lang("currency")}
           </Typography>
           <Typography mt={0} mb={2} variant="h6" component="h5">
-            {getPhrase(l, "monthPayment")}
+            {lang("monthPayment")}
           </Typography>
         </Box>
       </Grid>
