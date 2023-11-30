@@ -5,9 +5,14 @@ import {
 } from "../MortgageClass";
 import { reducerStates } from "./states";
 
+export interface ICalcAction {
+  type: string;
+  payload: MortgageInit;
+}
+
 export function calcReducer(
   mortgage: MortgageAnnuitent | MortgageDiffer,
-  { type, payload }: { type: string; payload: MortgageInit }
+  { type, payload }: ICalcAction
 ) {
   switch (type) {
     case reducerStates.UPDATE_INIT:

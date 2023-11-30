@@ -1,8 +1,13 @@
 import { MortgageInit } from "../../MortgageClass";
 
+export interface IFormAction {
+  type: string;
+  payload: string;
+}
+
 export function reducer(
   state: MortgageInit,
-  { type, payload }: { type: string; payload: string }
+  { type, payload }: IFormAction
 ): MortgageInit {
   let val = 0;
   switch (type) {

@@ -24,9 +24,8 @@ export default function MortgageForm() {
     const target = event.target as HTMLInputElement;
     dispatchState({ type: target.id, payload: target.value });
   };
-
-  const handleChange = (event: SelectChangeEvent) => {
-    const target = event.target as HTMLInputElement;
+  const selectOnChangeHandle = (event: SelectChangeEvent) => {
+    const target = event.target as HTMLSelectElement;
     dispatchState({ type: target.id, payload: target.value });
   };
 
@@ -49,7 +48,7 @@ export default function MortgageForm() {
     >
       <FormControl sx={sx}>
         <Select
-          onChange={handleChange}
+          onChange={selectOnChangeHandle}
           defaultValue={"annuitet"}
           id="type"
           disabled

@@ -89,7 +89,6 @@ export class MortgageAnnuitent extends Mortgage {
         (this.totalRate - 1)
       ).toFixed(2)
     );
-    console.log("this.monthPayment", this.monthPayment);
   }
 
   getTable(): {
