@@ -101,6 +101,7 @@ export default function MortgageForm() {
             sx={{ fontSize: "20px" }}
             type="number"
             id="period"
+            inputProps={{ max: 50, min: 1 }}
             label={getPhrase(l, "years")}
             value={state.period ?? ""}
             onChange={onChangeHandle}
@@ -110,9 +111,7 @@ export default function MortgageForm() {
           <InputLabel htmlFor="yearRate">{getPhrase(l, "percent")}</InputLabel>
           <OutlinedInput
             sx={{ fontSize: "20px" }}
-            inputProps={{
-              step: 0.1,
-            }}
+            inputProps={{ max: 30, min: 1, step: 0.1 }}
             type="number"
             id="yearRate"
             label={getPhrase(l, "percent")}
