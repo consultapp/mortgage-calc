@@ -13,7 +13,7 @@ export const LANG: { [index: string]: { [index: string]: string } } = {
     totalPrice: "Стоимость объекта",
     startSum: "Первоначальный взнос",
     monthPayment: "Ежемесячный платёж",
-    investHeader: "Инвестиционный рассчет",
+    investHeader: "Инвестиционный расчет",
     rentIncomeMonth: "Арендная ставка (мес.)",
     payback: "Окупаемость (грязная)",
     yearIncomePercent: "Годовой доход",
