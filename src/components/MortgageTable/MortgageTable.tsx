@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { useContext } from "react";
 import { CalcContext } from "../../context/context";
 import { useLang } from "../../lang/useLang";
+import { ITableRow } from "../../classes/MortgageClass";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -51,7 +52,7 @@ export default function MortgageTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {mortgage.getTable().map((row) => (
+          {mortgage.getTable().map((row: ITableRow) => (
             <StyledTableRow key={row.period}>
               <StyledTableCell
                 component="th"

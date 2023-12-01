@@ -19,7 +19,7 @@ export const initialCalcState: MortgageInit = {
   type: MortgageType.A,
 };
 
-interface ITableRow {
+export interface ITableRow {
   period: number;
   mainDebtPart: number;
   percentDebtPart: number;
@@ -112,6 +112,18 @@ export class MortgageDiffer extends Mortgage {
     this.updateData();
   }
   updateData() {}
+  getTable(): ITable {
+    let balance = this.monthPayment * this.period;
+    return new Array(this.periodYears).fill({}).map((_, i) => {
+      balance -= this.monthPayment * 12;
+      return {
+        period: i + 1,
+        mainDebtPart: 0,
+        percentDebtPart: 0,
+        balance: balance,
+      };
+    });
+  }
 }
 
 // ЕЖЕМЕСЯЧНАЯ_СТАВКА = ПРОЦЕНТНАЯ_СТАВКА_ГОДОВЫХ / 12 / 100

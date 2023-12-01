@@ -12,8 +12,6 @@ import { useLang } from "../../lang/useLang";
 import { ChangeEvent, useContext, useState } from "react";
 import { CalcContext } from "../../context/context";
 
-const sx = { m: 2, ml: 0 };
-
 export default function Investment() {
   const lang = useLang();
   const [state, setState] = useState<number>(30000);
@@ -48,13 +46,13 @@ export default function Investment() {
             }}
           >
             <FormControl sx={{ m: 2, ml: 0, flexGrow: 1 }}>
-              <InputLabel htmlFor="creditTotal">
+              <InputLabel htmlFor="rentIncomeMonth">
                 {lang("rentIncomeMonth")}
               </InputLabel>
               <OutlinedInput
                 sx={{ fontSize: "20px" }}
                 type="number"
-                id="creditTotal"
+                id="rentIncomeMonth"
                 startAdornment={
                   <>
                     <Switch defaultChecked onChange={onToggler} />
