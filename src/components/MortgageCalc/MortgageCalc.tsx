@@ -7,6 +7,7 @@ import LanguageProvider from "../../lang/LanguageProvider";
 import LangSwitch from "../LangSwitch/LangSwitch";
 import InfoBox from "../InfoBox/InfoBox";
 import { useLang } from "../../lang/useLang";
+import Investment from "../Investment/Investment";
 
 function MortgageCalc() {
   return (
@@ -33,6 +34,7 @@ function MortgageCalc() {
           <Box sx={{ position: "absolute", right: "25px", top: "25px" }}>
             <LangSwitch />
           </Box>
+          <Investment />
           <InfoBox />
         </Container>
       </CalcProvider>

@@ -3,7 +3,7 @@ import {
   MortgageDiffer,
   MortgageInit,
   MortgageType,
-} from "../MortgageClass";
+} from "../classes/MortgageClass";
 import { reducerStates } from "./states";
 
 export interface ICalcAction {

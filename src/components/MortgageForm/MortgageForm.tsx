@@ -11,7 +11,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { ChangeEvent, useContext, useEffect, useReducer } from "react";
 import { CalcContext } from "../../context/context";
 import { reducerStates } from "../../context/states";
-import { MortgageType, initialCalcState } from "../../MortgageClass";
+import { MortgageType, initialCalcState } from "../../classes/MortgageClass";
 import { reducer } from "./reducer";
 import { useLang } from "../../lang/useLang";
 

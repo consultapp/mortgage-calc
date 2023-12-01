@@ -55,6 +55,8 @@ export class Mortgage implements IMortgageCalc {
   }
 }
 
+export type MortgageClass = MortgageAnnuitent | MortgageDiffer;
+
 export class MortgageAnnuitent extends Mortgage {
   //calculated
   monthRate: number = 0;

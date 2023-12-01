@@ -1,4 +1,4 @@
-import { MortgageInit, MortgageType } from "../../MortgageClass";
+import { MortgageInit, MortgageType } from "../../classes/MortgageClass";
 
 export interface IFormAction {
   type: string;
