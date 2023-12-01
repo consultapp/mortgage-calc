@@ -1,4 +1,4 @@
-import { MortgageInit } from "../../MortgageClass";
+import { MortgageInit, MortgageType } from "../../MortgageClass";
 
 export interface IFormAction {
   type: string;
@@ -17,7 +17,7 @@ export function reducer(
       if (payload === "" || (val >= 0 && val < 100)) {
         return {
           ...state,
-          yearRate: payload === "" ? payload : val,
+          yearRate: payload === "" ? NaN : val,
         };
       }
       break;
@@ -25,7 +25,7 @@ export function reducer(
     case "period":
       val = Number(payload);
       if (payload === "" || (val >= 0 && val < 100)) {
-        return { ...state, period: payload === "" ? payload : val };
+        return { ...state, period: payload === "" ? NaN : val };
       }
       break;
 
@@ -33,7 +33,7 @@ export function reducer(
       val = Number(payload);
       //   1 000 000 000
       if (payload === "" || (val >= 0 && val <= 1000000000)) {
-        return { ...state, creditTotal: payload === "" ? payload : val };
+        return { ...state, creditTotal: payload === "" ? NaN : val };
       }
       break;
 
@@ -44,12 +44,15 @@ export function reducer(
         (payload === "" || (val >= 0 && val <= 1000000000)) &&
         val < Number(state.creditTotal) - 99
       ) {
-        return { ...state, startSum: payload === "" ? payload : val };
+        return { ...state, startSum: payload === "" ? NaN : val };
       }
       break;
 
     case "type":
-      return { ...state, type: payload === "annuitet" ? "annuitet" : "differ" };
+      return {
+        ...state,
+        type: payload === MortgageType.A ? MortgageType.A : MortgageType.D,
+      };
 
     default:
       break;

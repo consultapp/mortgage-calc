@@ -11,7 +11,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { ChangeEvent, useContext, useEffect, useReducer } from "react";
 import { CalcContext } from "../../context/context";
 import { reducerStates } from "../../context/states";
-import { initialCalcState } from "../../MortgageClass";
+import { MortgageType, initialCalcState } from "../../MortgageClass";
 import { reducer } from "./reducer";
 import { useLang } from "../../lang/useLang";
 
@@ -49,13 +49,13 @@ export default function MortgageForm() {
       <FormControl sx={sx}>
         <Select
           onChange={selectOnChangeHandle}
-          defaultValue={"annuitet"}
+          defaultValue={MortgageType.A}
           id="type"
           disabled
           sx={{ fontSize: "20px" }}
         >
-          <MenuItem value="annuitet">{lang("annuity")}</MenuItem>
-          <MenuItem value="differ">{lang("differ")}</MenuItem>
+          <MenuItem value={MortgageType.A}>{lang(MortgageType.A)}</MenuItem>
+          <MenuItem value={MortgageType.D}>{lang(MortgageType.D)}</MenuItem>
         </Select>
       </FormControl>
       <FormControl sx={sx}>
@@ -68,8 +68,9 @@ export default function MortgageForm() {
             <InputAdornment position="start">{lang("currency")}</InputAdornment>
           }
           label={lang("totalPrice")}
-          value={state.creditTotal ?? ""}
+          value={state.creditTotal || ""}
           onChange={onChangeHandle}
+          inputProps={{ step: 100000 }}
         />
       </FormControl>
       <FormControl sx={sx}>
@@ -82,8 +83,9 @@ export default function MortgageForm() {
             <InputAdornment position="start">{lang("currency")}</InputAdornment>
           }
           label={lang("startSum")}
-          value={state.startSum ?? ""}
+          value={state.startSum || ""}
           onChange={onChangeHandle}
+          inputProps={{ step: 100000 }}
         />
       </FormControl>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -95,7 +97,7 @@ export default function MortgageForm() {
             id="period"
             inputProps={{ max: 50, min: 1 }}
             label={lang("years")}
-            value={state.period ?? ""}
+            value={state.period || ""}
             onChange={onChangeHandle}
           />
         </FormControl>
@@ -107,7 +109,7 @@ export default function MortgageForm() {
             type="number"
             id="yearRate"
             label={lang("percent")}
-            value={state.yearRate ?? ""}
+            value={state.yearRate || ""}
             endAdornment={<InputAdornment position="end">%</InputAdornment>}
             onChange={onChangeHandle}
           />

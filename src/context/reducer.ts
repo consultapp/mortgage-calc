@@ -2,6 +2,7 @@ import {
   MortgageAnnuitent,
   MortgageDiffer,
   MortgageInit,
+  MortgageType,
 } from "../MortgageClass";
 import { reducerStates } from "./states";
 
@@ -16,7 +17,7 @@ export function calcReducer(
 ) {
   switch (type) {
     case reducerStates.UPDATE_INIT:
-      return payload.type === "annuitet"
+      return payload.type === MortgageType.A
         ? new MortgageAnnuitent(payload)
         : new MortgageDiffer(payload);
 

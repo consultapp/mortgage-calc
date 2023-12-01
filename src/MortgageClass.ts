@@ -1,20 +1,14 @@
-export type MortgageInit = {
-  yearRate: number | string;
-  period: number | string;
-  creditTotal: number | string;
-  startSum: number | string;
-  type: "annuitet" | "differ";
-};
+export const enum MortgageType {
+  A = "annuity",
+  D = "differ",
+}
 
-interface IMortgageCalc {
-  monthPayment: number;
-  updateInitialData?(data: MortgageInit): void;
-  getTable?(): {
-    period: number;
-    mainDebtPart: number;
-    percentDebtPart: number;
-    balance: number;
-  }[];
+export interface MortgageInit {
+  yearRate: number;
+  period: number;
+  creditTotal: number;
+  startSum: number;
+  type: MortgageType;
 }
 
 export const initialCalcState: MortgageInit = {
@@ -22,8 +16,22 @@ export const initialCalcState: MortgageInit = {
   period: 20,
   creditTotal: 10000000,
   startSum: 4000000,
-  type: "annuitet",
+  type: MortgageType.A,
 };
+
+interface ITableRow {
+  period: number;
+  mainDebtPart: number;
+  percentDebtPart: number;
+  balance: number;
+}
+type ITable = Array<ITableRow>;
+
+interface IMortgageCalc {
+  monthPayment: number;
+  updateInitialData(data: MortgageInit): void;
+  getTable?(): ITable;
+}
 
 export class Mortgage implements IMortgageCalc {
   yearRate: number = Number(initialCalcState.yearRate);
@@ -31,7 +39,7 @@ export class Mortgage implements IMortgageCalc {
   periodYears: number = 0;
   creditTotal: number = Number(initialCalcState.creditTotal);
   startSum: number = Number(initialCalcState.startSum);
-  type: "annuitet" | "differ" = "annuitet";
+  type: MortgageType = MortgageType.A;
   monthPayment: number = 0;
 
   constructor(data: MortgageInit) {
@@ -44,23 +52,6 @@ export class Mortgage implements IMortgageCalc {
     this.period = Number(period) * 12;
     this.creditTotal = Number(creditTotal);
     this.startSum = Number(startSum);
-  }
-  getTable(): {
-    period: number;
-    mainDebtPart: number;
-    percentDebtPart: number;
-    balance: number;
-  }[] {
-    let balance = this.monthPayment * this.period;
-    return new Array(this.periodYears).fill({}).map((_, i) => {
-      balance -= this.monthPayment * 12;
-      return {
-        period: i + 1,
-        mainDebtPart: 0,
-        percentDebtPart: 0,
-        balance: balance,
-      };
-    });
   }
 }
 
@@ -91,12 +82,7 @@ export class MortgageAnnuitent extends Mortgage {
     );
   }
 
-  getTable(): {
-    period: number;
-    mainDebtPart: number;
-    percentDebtPart: number;
-    balance: number;
-  }[] {
+  getTable(): ITable {
     let balance = this.monthPayment * this.period;
     return new Array(this.periodYears).fill({}).map((_, i) => {
       balance -= this.monthPayment * 12;
